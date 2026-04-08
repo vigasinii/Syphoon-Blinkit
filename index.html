@@ -4,80 +4,126 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Syphoon Lays Chips · Blinkit Intelligence</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --bg:#F0F4FA;--surface:#FFFFFF;--surface2:#EBF0F8;--border:#D8E2F0;--border2:#B8CBE8;
-  --text:#0A1628;--text2:#2C3E5E;--text3:#6A7FA0;
-  --accent:#1A56DB;--accent-dk:#1240B0;--accent-lt:rgba(26,86,219,.07);--accent-md:rgba(26,86,219,.15);
-  --green:#16A34A;--green-lt:rgba(22,163,74,.08);
-  --red:#DC2626;--red-lt:rgba(220,38,38,.08);
-  --amber:#D97706;--amber-lt:rgba(217,119,6,.08);
-  --purple:#7C3AED;--purple-lt:rgba(124,58,237,.08);
-  --teal:#0891B2;--teal-lt:rgba(8,145,178,.08);
-  --r:10px;--rs:6px;
-  --sh:0 1px 4px rgba(10,22,40,.06),0 1px 2px rgba(10,22,40,.03);
+  --bg:#F5F7FA;
+  --surface:#FFFFFF;
+  --surface2:#F0F3F8;
+  --surface3:#E8EDF6;
+  --border:#E3E8F0;
+  --border2:#C8D5E8;
+  --text:#0F1C2E;
+  --text2:#374863;
+  --text3:#8494AC;
+  --text4:#B0BFCF;
+  --accent:#1B4FD8;
+  --accent-lt:rgba(27,79,216,.06);
+  --accent-md:rgba(27,79,216,.12);
+  --accent-bd:rgba(27,79,216,.2);
+  --green:#0C9251;
+  --green-lt:rgba(12,146,81,.07);
+  --green-bd:rgba(12,146,81,.2);
+  --red:#C93535;
+  --red-lt:rgba(201,53,53,.07);
+  --red-bd:rgba(201,53,53,.2);
+  --amber:#B86800;
+  --amber-lt:rgba(184,104,0,.07);
+  --amber-bd:rgba(184,104,0,.2);
+  --purple:#6B35C9;--purple-lt:rgba(107,53,201,.07);
+  --teal:#0882A8;--teal-lt:rgba(8,130,168,.07);
+  --r:8px;--rs:5px;
+  --sh:0 1px 2px rgba(15,28,46,.05),0 0 0 1px rgba(15,28,46,.04);
+  --sh2:0 4px 12px rgba(15,28,46,.08),0 1px 3px rgba(15,28,46,.05);
 }
-html,body{height:100%;overflow:hidden;font-family:'DM Sans',sans-serif;font-size:13px;background:var(--bg);color:var(--text);}
-.mono{font-family:'DM Mono',monospace;}
+html,body{height:100%;overflow:hidden;font-family:'Inter',system-ui,sans-serif;font-size:13px;background:var(--bg);color:var(--text);}
+.mono{font-family:'JetBrains Mono','DM Mono',monospace;}
+
+/* ── SHELL ── */
 .shell{display:flex;height:100vh;}
-.sb{width:230px;min-width:230px;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow-y:auto;}
-.logo-area{padding:16px 18px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
-.logo-mark{width:32px;height:32px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.logo-mark svg{width:17px;height:17px;}
-.logo-name{font-size:15px;font-weight:600;letter-spacing:-.3px;}
-.logo-tag{font-size:10px;color:var(--text3);margin-top:1px;}
-.client-card{margin:11px 14px 4px;background:var(--accent-lt);border:1px solid var(--accent-md);border-radius:var(--rs);padding:9px 12px;display:flex;align-items:center;gap:9px;}
-.cpulse{width:7px;height:7px;border-radius:50%;background:var(--accent);flex-shrink:0;animation:pu 2s infinite;}
-@keyframes pu{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.75)}}
-.cname{font-size:12.5px;font-weight:600;color:var(--accent);}
-.ctag{font-size:10.5px;color:var(--text3);margin-top:1px;}
-.nav-grp{padding:7px 0 2px;}
-.nav-lbl{padding:5px 18px 3px;font-size:9.5px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text3);}
-.ni{display:flex;align-items:center;gap:9px;padding:7px 18px;cursor:pointer;color:var(--text2);font-size:12.5px;border-left:2px solid transparent;transition:all .12s;user-select:none;}
-.ni:hover{background:var(--surface2);color:var(--text);}
-.ni.active{background:var(--accent-lt);color:var(--accent);border-left-color:var(--accent);font-weight:500;}
-.ni svg{width:14px;height:14px;flex-shrink:0;opacity:.7;}
-.ni.active svg{opacity:1;}
-.nbadge{margin-left:auto;font-size:10px;font-weight:600;padding:1px 6px;border-radius:20px;background:var(--red-lt);color:var(--red);}
-.sb-foot{margin-top:auto;padding:13px 18px;border-top:1px solid var(--border);}
-.sfr{display:flex;justify-content:space-between;align-items:center;padding:2px 0;}
+
+/* ── SIDEBAR ── */
+.sb{width:216px;min-width:216px;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow-y:auto;}
+
+.logo-area{padding:14px 16px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px;}
+.logo-mark{width:28px;height:28px;border-radius:7px;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.logo-mark svg{width:14px;height:14px;}
+.logo-name{font-size:13.5px;font-weight:600;letter-spacing:-.25px;color:var(--text);}
+.logo-tag{font-size:9.5px;color:var(--text3);margin-top:1px;letter-spacing:.1px;}
+
+.client-card{margin:10px 12px 2px;background:var(--accent-lt);border:1px solid var(--accent-bd);border-radius:6px;padding:8px 10px;display:flex;align-items:center;gap:8px;}
+.cpulse{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;animation:pu 2.5s infinite;}
+@keyframes pu{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.65)}}
+.cname{font-size:11.5px;font-weight:600;color:var(--accent);}
+.ctag{font-size:10px;color:var(--text3);margin-top:1px;}
+
+.nav-grp{padding:8px 0 2px;}
+.nav-lbl{padding:5px 14px 3px;font-size:9px;font-weight:600;letter-spacing:1.1px;text-transform:uppercase;color:var(--text4);}
+
+.ni{display:flex;align-items:center;gap:0;padding:0 10px;height:32px;cursor:pointer;color:var(--text3);font-size:12px;font-weight:400;border-radius:5px;margin:1px 6px;transition:background .1s,color .1s;user-select:none;position:relative;}
+.ni:hover{background:var(--surface2);color:var(--text2);}
+.ni.active{background:var(--accent-lt);color:var(--accent);font-weight:500;}
+.ni.active::before{content:'';position:absolute;left:-6px;top:50%;transform:translateY(-50%);width:3px;height:16px;background:var(--accent);border-radius:0 3px 3px 0;}
+.ni-ic{width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ni-ic svg{width:13px;height:13px;stroke:currentColor;fill:none;}
+.ni.active .ni-ic svg{stroke:var(--accent);}
+.ni-label{flex:1;line-height:1;}
+.nbadge{margin-left:auto;font-size:9.5px;font-weight:600;padding:1px 5px;border-radius:10px;background:var(--red-lt);color:var(--red);border:1px solid var(--red-bd);}
+
+.sb-foot{margin-top:auto;padding:12px 14px;border-top:1px solid var(--border);}
+.sfr{display:flex;justify-content:space-between;align-items:center;padding:2.5px 0;}
 .sfl{font-size:10.5px;color:var(--text3);}
-.sfv{font-size:10.5px;font-family:'DM Mono',monospace;color:var(--text2);}
-.ldot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pu 2s infinite;display:inline-block;margin-right:3px;}
+.sfv{font-size:10.5px;font-family:'JetBrains Mono','DM Mono',monospace;color:var(--text2);}
+.ldot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:pu 2.5s infinite;display:inline-block;margin-right:4px;vertical-align:middle;}
+
+/* ── TOPBAR ── */
 .main{flex:1;display:flex;flex-direction:column;overflow:hidden;}
-.topbar{height:52px;min-height:52px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 22px;gap:12px;flex-shrink:0;}
-.pg-title{font-size:14px;font-weight:600;}
-.tb-sep{width:1px;height:18px;background:var(--border2);}
-.tb-meta{font-size:11.5px;color:var(--text3);}
+.topbar{height:48px;min-height:48px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 20px;gap:10px;flex-shrink:0;}
+.pg-title{font-size:13.5px;font-weight:600;color:var(--text);}
+.tb-sep{width:1px;height:16px;background:var(--border2);}
+.tb-meta{font-size:11px;color:var(--text3);}
 .sp{flex:1;}
-.sbox{display:flex;align-items:center;gap:7px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--rs);padding:6px 11px;width:200px;}
-.sbox input{background:none;border:none;outline:none;color:var(--text);font-size:12px;font-family:inherit;width:100%;}
-.sbox input::placeholder{color:var(--text3);}
-.tsel{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);color:var(--text2);font-size:12px;font-family:inherit;padding:6px 9px;outline:none;cursor:pointer;}
-.live-pill{display:flex;align-items:center;gap:5px;background:var(--green-lt);border:1px solid rgba(22,163,74,.2);border-radius:20px;padding:4px 10px;font-size:11px;font-weight:500;color:var(--green);}
-.cnt{flex:1;overflow-y:auto;padding:18px 22px;display:flex;flex-direction:column;gap:14px;}
+.sbox-wrap{position:relative;}
+.sbox{display:flex;align-items:center;gap:7px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--rs);padding:5px 10px;width:192px;transition:border-color .15s;}
+.sbox:focus-within{border-color:var(--accent-bd);background:#fff;}
+.sbox svg{flex-shrink:0;opacity:.5;}
+.sbox input{background:none;border:none;outline:none;color:var(--text);font-size:11.5px;font-family:inherit;width:100%;}
+.sbox input::placeholder{color:var(--text4);}
+.tsel{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);color:var(--text2);font-size:11.5px;font-family:inherit;padding:5px 8px;outline:none;cursor:pointer;}
+.tsel:hover{border-color:var(--border2);}
+.live-pill{display:flex;align-items:center;gap:5px;background:var(--green-lt);border:1px solid var(--green-bd);border-radius:20px;padding:3px 9px;font-size:10.5px;font-weight:500;color:var(--green);}
+
+/* ── CONTENT ── */
+.cnt{flex:1;overflow-y:auto;padding:16px 20px;display:flex;flex-direction:column;gap:12px;}
+
+/* ── CARDS ── */
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;}
-.ch{display:flex;align-items:flex-start;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--border);gap:10px;flex-wrap:wrap;}
-.ct{font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;color:var(--text2);}
-.cs{font-size:11px;color:var(--text3);margin-top:2px;}
-.ca{display:flex;align-items:center;gap:7px;flex-wrap:wrap;flex-shrink:0;}
-.cb{padding:14px 16px;}
-.kr{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
-.kpi{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh);padding:14px 16px;}
-.kl{font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;color:var(--text3);margin-bottom:5px;}
-.kv{font-size:24px;font-weight:600;font-family:'DM Mono',monospace;line-height:1;}
-.kd{font-size:11px;color:var(--text3);margin-top:5px;}
-.kbar{height:3px;background:var(--surface2);border-radius:2px;margin-top:10px;}
+.ch{display:flex;align-items:flex-start;justify-content:space-between;padding:11px 14px;border-bottom:1px solid var(--border);gap:10px;flex-wrap:wrap;}
+.ct{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.65px;color:var(--text2);}
+.cs{font-size:10.5px;color:var(--text3);margin-top:2px;font-weight:400;}
+.ca{display:flex;align-items:center;gap:6px;flex-wrap:wrap;flex-shrink:0;}
+.cb{padding:14px;}
+
+/* ── KPI CARDS ── */
+.kr{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.kpi{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh);padding:13px 14px;}
+.kl{font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:.65px;color:var(--text3);margin-bottom:7px;}
+.kv{font-size:22px;font-weight:600;font-family:'JetBrains Mono','DM Mono',monospace;line-height:1;letter-spacing:-.5px;}
+.kd{font-size:10.5px;color:var(--text3);margin-top:5px;}
+.kbar{height:2px;background:var(--surface3);border-radius:2px;margin-top:11px;}
 .kbf{height:100%;border-radius:2px;}
 .up{color:var(--green);}.dn{color:var(--red);}.neu{color:var(--text3);}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
-.g64{display:grid;grid-template-columns:6fr 4fr;gap:14px;}
-.g46{display:grid;grid-template-columns:4fr 6fr;gap:14px;}
-.bd{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-family:'DM Mono',monospace;font-weight:500;}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.g64{display:grid;grid-template-columns:6fr 4fr;gap:12px;}
+.g46{display:grid;grid-template-columns:4fr 6fr;gap:12px;}
+
+/* ── BADGES ── */
+.bd{display:inline-block;padding:1px 6px;border-radius:3px;font-size:10.5px;font-family:'JetBrains Mono','DM Mono',monospace;font-weight:500;}
 .bg{background:var(--green-lt);color:var(--green);}
 .br{background:var(--red-lt);color:var(--red);}
 .ba{background:var(--amber-lt);color:var(--amber);}
@@ -85,55 +131,76 @@ html,body{height:100%;overflow:hidden;font-family:'DM Sans',sans-serif;font-size
 .bn{background:var(--surface2);color:var(--text3);}
 .bp{background:var(--purple-lt);color:var(--purple);}
 .bt{background:var(--teal-lt);color:var(--teal);}
-.chip{padding:4px 10px;border:1px solid var(--border2);border-radius:20px;font-size:11.5px;cursor:pointer;color:var(--text3);background:var(--surface);transition:all .12s;font-family:inherit;}
-.chip:hover,.chip.active{border-color:var(--accent);color:var(--accent);background:var(--accent-lt);}
+
+/* ── CHIPS ── */
+.chip{padding:3px 8px;border:1px solid var(--border2);border-radius:4px;font-size:11px;cursor:pointer;color:var(--text3);background:var(--surface);transition:all .1s;font-family:inherit;}
+.chip:hover,.chip.active{border-color:var(--accent-bd);color:var(--accent);background:var(--accent-lt);}
+
+/* ── TABLE ── */
 .tbl{width:100%;border-collapse:collapse;}
-.tbl th{font-size:10.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--text3);font-weight:600;padding:8px 14px;text-align:left;border-bottom:1px solid var(--border);background:var(--surface2);}
-.tbl td{padding:9px 14px;border-bottom:1px solid var(--border);font-size:12.5px;vertical-align:middle;}
+.tbl th{font-size:9.5px;text-transform:uppercase;letter-spacing:.65px;color:var(--text3);font-weight:600;padding:7px 13px;text-align:left;border-bottom:1px solid var(--border);background:var(--surface2);}
+.tbl td{padding:8px 13px;border-bottom:1px solid var(--border);font-size:12px;vertical-align:middle;color:var(--text2);}
 .tbl tr:last-child td{border-bottom:none;}
 .tbl tr:hover td{background:var(--surface2);}
-.tbl .m{font-family:'DM Mono',monospace;font-size:12px;}
-.tbl .s{font-weight:500;}
-.dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px;}
+.tbl .m{font-family:'JetBrains Mono','DM Mono',monospace;font-size:11.5px;color:var(--text);}
+.tbl .s{font-weight:500;color:var(--text);}
+
+/* ── STATUS DOTS ── */
+.dot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:5px;}
 .dg{background:var(--green);}.dr{background:var(--red);}.da{background:var(--amber);}
-.ai{display:flex;gap:11px;padding:12px 16px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .12s;}
+
+/* ── ALERT ROWS ── */
+.ai{display:flex;gap:10px;padding:10px 14px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .1s;}
 .ai:last-child{border-bottom:none;}
 .ai:hover{background:var(--surface2);}
-.aico{width:30px;height:30px;min-width:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.aico{width:26px;height:26px;min-width:26px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:9.5px;font-weight:700;flex-shrink:0;font-family:'JetBrains Mono','DM Mono',monospace;}
 .ar2{background:var(--red-lt);color:var(--red);}
 .aa2{background:var(--amber-lt);color:var(--amber);}
 .ab2{background:var(--accent-lt);color:var(--accent);}
 .ag2{background:var(--green-lt);color:var(--green);}
-.at2{font-size:12.5px;line-height:1.45;}
-.am2{font-size:10.5px;color:var(--text3);margin-top:3px;}
-.scr{overflow-y:auto;max-height:290px;}
-.scr2{overflow-y:auto;max-height:360px;}
-.lgd{display:flex;gap:14px;flex-wrap:wrap;padding:10px 16px;border-top:1px solid var(--border);}
-.li{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text3);}
-.ll{width:14px;height:3px;border-radius:2px;flex-shrink:0;}
-.ld2{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
-.ins{font-size:11.5px;color:var(--text3);line-height:1.6;padding:10px 16px;border-top:1px solid var(--border);}
-.ins strong{color:var(--text2);}
+.at2{font-size:12px;line-height:1.5;color:var(--text2);}
+.am2{font-size:10px;color:var(--text3);margin-top:3px;}
+
+/* ── SCROLLERS ── */
+.scr{overflow-y:auto;max-height:280px;}
+.scr2{overflow-y:auto;max-height:340px;}
+
+/* ── LEGEND ── */
+.lgd{display:flex;gap:12px;flex-wrap:wrap;padding:9px 14px;border-top:1px solid var(--border);}
+.li{display:flex;align-items:center;gap:5px;font-size:10.5px;color:var(--text3);}
+.ll{width:12px;height:2px;border-radius:2px;flex-shrink:0;}
+.ld2{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+
+/* ── INSIGHT BAR ── */
+.ins{font-size:11px;color:var(--text3);line-height:1.65;padding:9px 14px;border-top:1px solid var(--border);background:var(--surface2);}
+.ins strong{color:var(--text2);font-weight:500;}
+
+/* ── DONUT ── */
 .dw{position:relative;}
 .dc{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none;}
-.hidden{display:none!important;}
-.fi{animation:fadeIn .2s ease;}
-@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
-.flash{animation:fl .5s ease;}
-@keyframes fl{0%,100%{opacity:1}50%{opacity:.25}}
-.stbar{height:26px;background:var(--surface);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 18px;gap:16px;flex-shrink:0;}
-.sti{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--text3);}
-::-webkit-scrollbar{width:4px;height:4px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px;}
 
-/* Search results overlay */
-.search-results{position:absolute;top:100%;left:0;right:0;background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);box-shadow:0 4px 16px rgba(10,22,40,.12);z-index:200;max-height:280px;overflow-y:auto;margin-top:4px;}
-.sr-item{padding:9px 12px;cursor:pointer;border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:2px;}
+/* ── SEARCH DROPDOWN ── */
+.search-results{position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);box-shadow:var(--sh2);z-index:200;max-height:260px;overflow-y:auto;}
+.sr-item{padding:8px 11px;cursor:pointer;border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:2px;}
 .sr-item:last-child{border-bottom:none;}
 .sr-item:hover{background:var(--surface2);}
-.sr-item .sr-name{font-size:12.5px;font-weight:500;color:var(--text);}
-.sr-item .sr-meta{font-size:10.5px;color:var(--text3);}
+.sr-item .sr-name{font-size:12px;font-weight:500;color:var(--text);}
+.sr-item .sr-meta{font-size:10px;color:var(--text3);}
 .sr-item .sr-lays{color:var(--accent);}
-.sbox-wrap{position:relative;}
+
+/* ── STATUS BAR ── */
+.stbar{height:24px;background:var(--surface);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:16px;flex-shrink:0;}
+.sti{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--text3);}
+
+/* ── UTILS ── */
+.hidden{display:none!important;}
+.fi{animation:fadeIn .18s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+.flash{animation:fl .5s ease;}
+@keyframes fl{0%,100%{opacity:1}50%{opacity:.15}}
+::-webkit-scrollbar{width:3px;height:3px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px;}
 </style>
 </head>
 <body>
@@ -142,42 +209,81 @@ html,body{height:100%;overflow:hidden;font-family:'DM Sans',sans-serif;font-size
 <div class="sb">
   <div class="logo-area">
     <div class="logo-mark">
-      <svg viewBox="0 0 17 17" fill="none"><path d="M13 5C13 3.34 11.66 2 10 2H7C5.34 2 4 3.34 4 5C4 6.66 5.34 8 7 8H10C11.66 8 13 9.34 13 11C13 12.66 11.66 14 10 14H7C5.34 14 4 12.66 4 11" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <svg viewBox="0 0 14 14" fill="none"><path d="M11 4C11 2.9 10.1 2 9 2H5C3.9 2 3 2.9 3 4s.9 2 2 2h4c1.1 0 2 .9 2 2s-.9 2-2 2H5c-1.1 0-2-.9-2-2" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg>
     </div>
     <div><div class="logo-name">Syphoon</div><div class="logo-tag">Quick Commerce Intelligence</div></div>
   </div>
+
   <div class="client-card">
     <div class="cpulse"></div>
-    <div><div class="cname">Lays Chips</div><div class="ctag" id="ctag">Blinkit · 6 Cities · Live SKUs</div></div>
+    <div><div class="cname">Lays Chips</div><div class="ctag" id="ctag">Blinkit · 6 Cities · Live</div></div>
   </div>
+
   <div class="nav-grp">
     <div class="nav-lbl">Overview</div>
-    <div class="ni active" onclick="nav(this,'dashboard')"><svg viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="5" height="5" rx="1.5" stroke="currentColor" stroke-width="1.3"/><rect x="1" y="8" width="5" height="5" rx="1.5" stroke="currentColor" stroke-width="1.3"/><rect x="8" y="1" width="5" height="5" rx="1.5" stroke="currentColor" stroke-width="1.3"/><rect x="8" y="8" width="5" height="5" rx="1.5" stroke="currentColor" stroke-width="1.3"/></svg>Dashboard</div>
+    <div class="ni active" onclick="nav(this,'dashboard')">
+      <div class="ni-ic"><svg viewBox="0 0 14 14" fill="none"><rect x="1.5" y="1.5" width="4.5" height="4.5" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="1.5" y="8" width="4.5" height="4.5" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="8" y="1.5" width="4.5" height="4.5" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="8" y="8" width="4.5" height="4.5" rx="1" stroke="currentColor" stroke-width="1.3"/></svg></div>
+      <span class="ni-label">Dashboard</span>
+    </div>
   </div>
+
   <div class="nav-grp">
     <div class="nav-lbl">Price Intelligence</div>
-    <div class="ni" onclick="nav(this,'price-history')"><svg viewBox="0 0 14 14" fill="none"><polyline points="1,11 4.5,7 7.5,9 13,3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>Price History</div>
-    <div class="ni" onclick="nav(this,'mrp-tracker')"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 7h4M7 5v4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>MRP vs Selling Price</div>
+    <div class="ni" onclick="nav(this,'price-history')">
+      <div class="ni-ic"><svg viewBox="0 0 14 14" fill="none"><polyline points="1.5,11 5,6.5 8,8.5 12.5,3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <span class="ni-label">Price History</span>
+    </div>
+    <div class="ni" onclick="nav(this,'mrp-tracker')">
+      <div class="ni-ic"><svg viewBox="0 0 14 14" fill="none"><path d="M4 10V5m3 5V7m3 3V3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+      <span class="ni-label">MRP vs Selling Price</span>
+    </div>
   </div>
+
   <div class="nav-grp">
     <div class="nav-lbl">Availability</div>
-    <div class="ni" onclick="nav(this,'stock-map')"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="5.5" r="2.5" stroke="currentColor" stroke-width="1.3"/><path d="M7 13S1.5 9.5 1.5 5.5a5.5 5.5 0 0111 0C12.5 9.5 7 13 7 13Z" stroke="currentColor" stroke-width="1.3"/></svg>Stock &amp; Geo Map</div>
-    <div class="ni" onclick="nav(this,'new-launches')"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1v2M7 11v2M1 7h2M11 7h2M3.22 3.22l1.41 1.41M9.37 9.37l1.41 1.41M3.22 10.78l1.41-1.41M9.37 4.63l1.41-1.41" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>New Launches</div>
+    <div class="ni" onclick="nav(this,'stock-map')">
+      <div class="ni-ic"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1.5a4 4 0 0 1 4 4c0 3-4 7-4 7s-4-4-4-7a4 4 0 0 1 4-4z" stroke="currentColor" stroke-width="1.3"/><circle cx="7" cy="5.5" r="1.3" stroke="currentColor" stroke-width="1.2"/></svg></div>
+      <span class="ni-label">Stock &amp; Geo Map</span>
+    </div>
+    <div class="ni" onclick="nav(this,'new-launches')">
+      <div class="ni-ic"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.3"/><path d="M7 4.5v2.8l1.8 1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <span class="ni-label">New Launches</span>
+    </div>
   </div>
+
   <div class="nav-grp">
-    <div class="nav-lbl">Search &amp; Shelf</div>
-    <div class="ni" onclick="nav(this,'search-rank')"><svg viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="4" stroke="currentColor" stroke-width="1.3"/><line x1="9.5" y1="9.5" x2="13" y2="13" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Keyword Rank Tracker</div>
+    <div class="nav-lbl">Search</div>
+    <div class="ni" onclick="nav(this,'search-rank')">
+      <div class="ni-ic"><svg viewBox="0 0 14 14" fill="none"><circle cx="5.5" cy="5.5" r="3.5" stroke="currentColor" stroke-width="1.3"/><line x1="8.5" y1="8.5" x2="12" y2="12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+      <span class="ni-label">Keyword Rank Tracker</span>
+    </div>
   </div>
+
   <div class="nav-grp">
     <div class="nav-lbl">Competitive Intel</div>
-    <div class="ni" onclick="nav(this,'comp-pricing')"><svg viewBox="0 0 14 14" fill="none"><path d="M2 11L5.5 7 8 9.5 12 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="4" r="1.2" fill="currentColor"/></svg>Competitor Pricing</div>
-    <div class="ni" onclick="nav(this,'promo-calendar')"><svg viewBox="0 0 14 14" fill="none"><rect x="1.5" y="2.5" width="11" height="10" rx="1.5" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="5.5" x2="12.5" y2="5.5" stroke="currentColor" stroke-width="1.3"/><line x1="4.5" y1="1" x2="4.5" y2="4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><line x1="9.5" y1="1" x2="9.5" y2="4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Promo Calendar</div>
-    <div class="ni" onclick="nav(this,'category-crawl')"><svg viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.3"/><line x1="1" y1="5" x2="13" y2="5" stroke="currentColor" stroke-width="1.1"/><line x1="1" y1="9" x2="13" y2="9" stroke="currentColor" stroke-width="1.1"/><line x1="5" y1="5" x2="5" y2="13" stroke="currentColor" stroke-width="1.1"/></svg>Category Crawl</div>
+    <div class="ni" onclick="nav(this,'comp-pricing')">
+      <div class="ni-ic"><svg viewBox="0 0 14 14" fill="none"><path d="M1.5 10.5 5 7l2.5 2.5L12.5 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <span class="ni-label">Competitor Pricing</span>
+    </div>
+    <div class="ni" onclick="nav(this,'promo-calendar')">
+      <div class="ni-ic"><svg viewBox="0 0 14 14" fill="none"><rect x="1.5" y="2.5" width="11" height="10" rx="1.5" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="5.5" x2="12.5" y2="5.5" stroke="currentColor" stroke-width="1.2"/><line x1="4.5" y1="1" x2="4.5" y2="4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><line x1="9.5" y1="1" x2="9.5" y2="4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+      <span class="ni-label">Promo Calendar</span>
+    </div>
+    <div class="ni" onclick="nav(this,'category-crawl')">
+      <div class="ni-ic"><svg viewBox="0 0 14 14" fill="none"><rect x="1.5" y="1.5" width="11" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><line x1="1.5" y1="5" x2="12.5" y2="5" stroke="currentColor" stroke-width="1.1"/><line x1="1.5" y1="9" x2="12.5" y2="9" stroke="currentColor" stroke-width="1.1"/><line x1="5.5" y1="5" x2="5.5" y2="12.5" stroke="currentColor" stroke-width="1.1"/></svg></div>
+      <span class="ni-label">Category Crawl</span>
+    </div>
   </div>
+
   <div class="nav-grp">
     <div class="nav-lbl">Operations</div>
-    <div class="ni" onclick="nav(this,'alerts')"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1.5L12.5 11.5H1.5L7 1.5Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><line x1="7" y1="5.5" x2="7" y2="8.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="7" cy="10" r=".7" fill="currentColor"/></svg>Alert Centre<span class="nbadge" id="alert-badge">5</span></div>
+    <div class="ni" onclick="nav(this,'alerts')">
+      <div class="ni-ic"><svg viewBox="0 0 14 14" fill="none"><path d="M7 2C4.8 2 3 3.8 3 6v3l-1.5 1.5h11L11 9V6c0-2.2-1.8-4-4-4z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M5.5 10.5a1.5 1.5 0 0 0 3 0" stroke="currentColor" stroke-width="1.2"/></svg></div>
+      <span class="ni-label">Alert Centre</span>
+      <span class="nbadge" id="alert-badge">5</span>
+    </div>
   </div>
+
   <div class="sb-foot">
     <div class="sfr"><span class="sfl">Status</span><span style="color:var(--green);font-size:11px;font-weight:500;"><span class="ldot"></span>Live</span></div>
     <div class="sfr"><span class="sfl">Refresh</span><span class="sfv" style="color:var(--accent);" id="refresh-tick">10s</span></div>
@@ -236,7 +342,7 @@ html,body{height:100%;overflow:hidden;font-family:'DM Sans',sans-serif;font-size
           <div class="cb" style="display:flex;flex-direction:column;align-items:center;gap:14px;">
             <div class="dw" style="width:128px;height:128px;">
               <canvas id="stockDonut"></canvas>
-              <div class="dc"><div style="font-size:22px;font-weight:600;font-family:'DM Mono',monospace;">21</div><div style="font-size:10.5px;color:var(--text3);">in stock</div></div>
+              <div class="dc"><div style="font-size:22px;font-weight:600;font-family:'JetBrains Mono','DM Mono',monospace;">21</div><div style="font-size:10.5px;color:var(--text3);">in stock</div></div>
             </div>
             <div style="width:100%;display:flex;flex-direction:column;gap:6px;">
               <div style="display:flex;justify-content:space-between;font-size:12.5px;"><span><span class="dot dg"></span>In Stock</span><span class="mono" style="font-size:12px;">21 <span style="color:var(--text3)">(87.5%)</span></span></div>
@@ -276,7 +382,7 @@ html,body{height:100%;overflow:hidden;font-family:'DM Sans',sans-serif;font-size
           <div>
             <div class="ai"><div class="aico ar2">P1</div><div><div class="at2"><strong>Lay's American Cream 144g</strong> <span style="color:var(--red)">stockout</span> in Chennai · 4 pincodes · 6h+.</div><div class="am2">14m · Critical · Chennai</div></div></div>
             <div class="ai"><div class="aico ar2">P1</div><div><div class="at2"><strong>Lay's Sour Cream 50g</strong> <span style="color:var(--red)">₹52 vs MRP ₹45</span>. Above-MRP breach in Delhi.</div><div class="am2">38m · MRP Breach · Delhi</div></div></div>
-            <div class="ai"><div class="aico aa2">!</div><div><div class="at2"><strong>Lay's Magic Masala 90g</strong> discount at <span style="color:var(--amber)">28%</span> — below your 25% floor threshold.</div><div class="am2">2h · Discount Alert · All Cities</div></div></div>
+            <div class="ai"><div class="aico aa2">!</div><div><div class="at2"><strong>Lay's Magic Masala 90g</strong> discount at <span style="color:var(--amber)">28%</span>: below your 25% floor threshold.</div><div class="am2">2h · Discount Alert · All Cities</div></div></div>
             <div class="ai"><div class="aico ab2">i</div><div><div class="at2"><strong>New SKU detected:</strong> Bingo! Mad Angles Achaari Masti 75g first listed in Snacks.</div><div class="am2">3h · New Launch · All Cities</div></div></div>
           </div>
         </div>
@@ -333,19 +439,19 @@ html,body{height:100%;overflow:hidden;font-family:'DM Sans',sans-serif;font-size
       <div class="kr">
         <div class="kpi"><div class="kl">Avg Discount vs MRP</div><div class="kv" style="color:var(--amber)">18.4%</div><div class="kd">Across all 24 active SKUs today</div></div>
         <div class="kpi"><div class="kl">MRP Breach Detected</div><div class="kv" style="color:var(--red)">1</div><div class="kd">Salted Cream 90g · Delhi · ₹52 vs ₹45</div></div>
-        <div class="kpi"><div class="kl">Deepest Discount SKU</div><div class="kv" style="font-size:16px;color:var(--amber)">Masala 90g</div><div class="kd">22.2% off MRP — ₹35 vs ₹45</div></div>
+        <div class="kpi"><div class="kl">Deepest Discount SKU</div><div class="kv" style="font-size:16px;color:var(--amber)">Masala 90g</div><div class="kd">22.2% off MRP: ₹35 vs ₹45</div></div>
         <div class="kpi"><div class="kl">No-Discount SKUs</div><div class="kv">9</div><div class="kd">Selling at full MRP across all pincodes</div></div>
       </div>
       <div class="card">
-        <div class="ch"><div><div class="ct">MRP vs Selling Price — All Active SKUs</div><div class="cs">Effective discount detected from live selling price vs listed MRP</div></div></div>
+        <div class="ch"><div><div class="ct">MRP vs Selling Price: All Active SKUs</div><div class="cs">Effective discount detected from live selling price vs listed MRP</div></div></div>
         <div class="cb"><div style="position:relative;height:230px;"><canvas id="mrpChart"></canvas></div></div>
         <div class="lgd"><span class="li"><span class="ll" style="background:#CBD5E1"></span>MRP</span><span class="li"><span class="ll" style="background:var(--accent)"></span>Selling Price</span></div>
-        <div class="ins">Salted Cream 90g is the only SKU above MRP — flag as listing error. Masala 90g and BBQ 150g carry the deepest effective discounts.</div>
+        <div class="ins">Salted Cream 90g is the only SKU above MRP: flag as listing error. Masala 90g and BBQ 150g carry the deepest effective discounts.</div>
       </div>
       <div class="card">
         <div class="ch"><div><div class="ct">Discount Pattern Recognition 7D</div><div class="cs">When and how deep discounts activate per SKU</div></div></div>
         <div class="cb"><div style="position:relative;height:180px;"><canvas id="discPatternChart"></canvas></div></div>
-        <div class="ins"><strong>Pattern detected:</strong> Masala 90g discounts activate on Thursdays and Sundays — aligning with Blinkit's mid-week and weekend promo windows.</div>
+        <div class="ins"><strong>Pattern detected:</strong> Masala 90g discounts activate on Thursdays and Sundays: aligning with Blinkit's mid-week and weekend promo windows.</div>
       </div>
     </div>
 
@@ -359,10 +465,10 @@ html,body{height:100%;overflow:hidden;font-family:'DM Sans',sans-serif;font-size
       <div class="card">
           <div class="ch"><div><div class="ct">SKU Availability by City</div><div class="cs">% of 24 Lays SKUs in stock per city right now</div></div></div>
           <div class="cb"><div style="position:relative;height:200px;"><canvas id="cityAvailChart"></canvas></div></div>
-          <div class="ins">Chennai and Pune are below 85% threshold — restock urgency applies.</div>
+          <div class="ins">Chennai and Pune are below 85% threshold: restock urgency applies.</div>
         </div>
       <div class="card">
-        <div class="ch"><div><div class="ct">Geographic Availability — Lays vs Competitors by City</div></div></div>
+        <div class="ch"><div><div class="ct">Geographic Availability: Lays vs Competitors by City</div></div></div>
         <div id="geo-heatmap"></div>
         <div class="ins"><strong>Coverage gap:</strong> Lays has limited pincode coverage in some cities. These represent unserved demand worth investigating.</div>
       </div>
@@ -373,12 +479,12 @@ html,body{height:100%;overflow:hidden;font-family:'DM Sans',sans-serif;font-size
       <div class="kr">
         <div class="kpi"><div class="kl">New SKUs Detected (7D)</div><div class="kv" style="color:var(--accent)">12</div><div class="kd">In Chips &amp; Snacks on Blinkit</div></div>
         <div class="kpi"><div class="kl">Direct Competitor Launches</div><div class="kv" style="color:var(--red)">3</div><div class="kd">Overlapping flavour / pack size with Lays</div></div>
-        <div class="kpi"><div class="kl">New Premium SKUs</div><div class="kv" style="color:var(--purple)">5</div><div class="kd">Priced above ₹50 — new premium segment</div></div>
+        <div class="kpi"><div class="kl">New Premium SKUs</div><div class="kv" style="color:var(--purple)">5</div><div class="kd">Priced above ₹50: new premium segment</div></div>
         <div class="kpi"><div class="kl">Categories Monitored</div><div class="kv">4</div><div class="kd">Chips, Crisps, Puffs, Popcorn</div></div>
       </div>
       <div class="card">
         <div class="ch">
-          <div><div class="ct">New SKU Detections — Last 7 Days</div><div class="cs">Any new SKU appearing in tracked categories gets flagged automatically</div></div>
+          <div><div class="ct">New SKU Detections: Last 7 Days</div><div class="cs">Any new SKU appearing in tracked categories gets flagged automatically</div></div>
           <div class="ca">
             <span class="chip active" onclick="filterNewLaunches('all',this)">All</span>
             <span class="chip" onclick="filterNewLaunches('high',this)">High Threat</span>
@@ -414,7 +520,7 @@ html,body{height:100%;overflow:hidden;font-family:'DM Sans',sans-serif;font-size
       <div class="g2">
         <div class="card">
           <div class="ch">
-            <div><div class="ct">Rank History — Keyword Drill-Down</div><div class="cs">Daily position tracking per keyword per city</div></div>
+            <div><div class="ct">Rank History: Keyword Drill-Down</div><div class="cs">Daily position tracking per keyword per city</div></div>
             <div class="ca">
               <select class="tsel" style="font-size:11px;" id="rank-kw" onchange="updateRankChart()"><option value="chips">chips</option><option value="snacks">snacks</option><option value="masala">masala chips</option><option value="peri">peri peri</option></select>
               <select class="tsel" style="font-size:11px;" id="rank-city" onchange="updateRankChart()"><option value="blr">Bengaluru</option><option value="mum">Mumbai</option><option value="del">Delhi</option></select>
@@ -492,7 +598,7 @@ html,body{height:100%;overflow:hidden;font-family:'DM Sans',sans-serif;font-size
       </div>
       <div class="card">
         <div class="ch">
-          <div><div class="ct">Full Category Crawl — Chips on Blinkit</div><div class="cs">Systematic view of every product in the Chips category</div></div>
+          <div><div class="ct">Full Category Crawl: Chips on Blinkit</div><div class="cs">Systematic view of every product in the Chips category</div></div>
           <div class="ca">
             <select class="tsel" style="font-size:11px;" id="crawl-pin" onchange="filterCrawl()">
               <option value="all">All Pincodes</option>
@@ -545,7 +651,7 @@ html,body{height:100%;overflow:hidden;font-family:'DM Sans',sans-serif;font-size
           <div class="scr2" id="al"></div>
         </div>
         <div class="card">
-          <div class="ch"><div class="ct">Alert Volume — Last 7 Days</div></div>
+          <div class="ch"><div class="ct">Alert Volume: Last 7 Days</div></div>
           <div class="cb"><div style="position:relative;height:230px;"><canvas id="alertChart"></canvas></div></div>
           <div class="lgd"><span class="li"><span class="ld2" style="background:var(--red)"></span>Critical</span><span class="li"><span class="ld2" style="background:var(--amber)"></span>Warning</span><span class="li"><span class="ld2" style="background:var(--green)"></span>Opportunity</span><span class="li"><span class="ld2" style="background:var(--accent)"></span>Intel</span></div>
           <div class="ins">Alert volume spiked Tuesday with 3 critical price and stock events. Ensure team is reviewing and actioning within the hour.</div>
@@ -566,7 +672,7 @@ html,body{height:100%;overflow:hidden;font-family:'DM Sans',sans-serif;font-size
 </div>
 
 <script>
-const CT={responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'#fff',borderColor:'#D8E2F0',borderWidth:1,titleColor:'#0A1628',bodyColor:'#2C3E5E',padding:10}},scales:{x:{grid:{color:'rgba(0,0,0,.04)'},ticks:{color:'#6A7FA0',font:{size:10,family:'DM Sans'}}},y:{grid:{color:'rgba(0,0,0,.04)'},ticks:{color:'#6A7FA0',font:{size:10,family:'DM Sans'}}}}};
+const CT={responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'#fff',borderColor:'#D8E2F0',borderWidth:1,titleColor:'#0A1628',bodyColor:'#2C3E5E',padding:10}},scales:{x:{grid:{color:'rgba(0,0,0,.04)'},ticks:{color:'#6A7FA0',font:{size:10,family:'Inter'}}},y:{grid:{color:'rgba(0,0,0,.04)'},ticks:{color:'#6A7FA0',font:{size:10,family:'Inter'}}}}};
 const ACC='#1A56DB';
 const D7=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
 const SK6=["Classic 51g","Magic Masala 90g","West Indies 80g","Herb & Onion 90g","Chile Limon 51g","Am. Cream 144g"];
@@ -580,7 +686,7 @@ const ALERTS=[
   {type:'critical',ico:'P1',cls:'ar2',title:'<strong>Price change:</strong> Lay\'s Magic Masala 90g dropped ₹42 → ₹35 in Bengaluru. 16.7% intraday drop.',meta:'1h · Critical · Price Alert · Bengaluru'},
 
 
-  {type:'warning',ico:'!',cls:'aa2',title:'<strong>Lay\'s Magic Masala 90g</strong> discount at <span style="color:var(--amber)">28%</span> — below your 25% floor price threshold.',meta:'2h · Warning · Discount Alert · All Cities'},
+  {type:'warning',ico:'!',cls:'aa2',title:'<strong>Lay\'s Magic Masala 90g</strong> discount at <span style="color:var(--amber)">28%</span>: below your 25% floor price threshold.',meta:'2h · Warning · Discount Alert · All Cities'},
   {type:'intel',ico:'i',cls:'ab2',title:'<strong>New SKU detected:</strong> Bingo! Mad Angles Achaari Masti 75g appeared across 3 cities in Snacks.',meta:'3h · Intel · New Launch Detection · All Cities'},
 ];
 let alertsData=[...ALERTS];
